@@ -34,6 +34,27 @@ contract NishantCoin is ERC20Interface, Ownable, SafeMath
     
     function transfer(address to, uint tokens) public returns(bool)
     {
+           balances[msg.sender] = safeSub(balances[msg.sender], tokens);
+           balances[to] = safeAdd(balances[to], tokens);
+           emit Transfer(msg.sender, to, tokens);
+           return true;
            
+    }
+    
+    function transferFrom(address from, address to, uint tokens) public returns(bool)
+    {
+        balances[from] = safeSub(balances[from], tokens);
+        allowed[from][msg.sender] = safeSub(allowed[from][msg.sender], tokens);
+        balances[to] = safeAdd(balances[to], tokens);
+        emit Transfer(from, to, tokens);
+        return true;
+    }
+    
+    function approve(address spender, uint tokens) public returns(bool)
+    {
+        allowed[msg.sender][spender] = tokens;
+        emit Approval(msg.sender, spender, tokens);
+        return true;
+        
     }
 }
