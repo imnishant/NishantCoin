@@ -18,8 +18,8 @@ contract NishantCoin is ERC20Interface, Ownable, SafeMath
         name = "Nishant Coin";
         decimals = 10;
         _totalSupply = 1000;
-        balances[0x038a17768c21c8cff795E00C9526f3b253fe44d3] = _totalSupply;
-        emit Transfer(address(0), 0x038a17768c21c8cff795E00C9526f3b253fe44d3, _totalSupply);
+        balances[ADDRESS] = _totalSupply;                   //Change ADDRESS with your address
+        emit Transfer(address(0), ADDRESS, _totalSupply);   //Change ADDRESS with your address
     }
     
     function totalSupply() public constant returns(uint)
