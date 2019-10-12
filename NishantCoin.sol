@@ -62,3 +62,6 @@ contract NishantCoin is ERC20Interface, Ownable, SafeMath
         return allowed[tokenOwner][spender];
     }
 }
+  
+  
+  
